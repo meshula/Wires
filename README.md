@@ -3,12 +3,13 @@ An exercise in parsing ASCII art flow charts for fun
 
 Note that to compile all the samples you will need leveldb in a folder called extern. i.e.:
 
+```
 Wires/
   extern/
-     leveldb/
+    leveldb/
   LabText/
   etc./
-  
+```  
 
 Wires
 ======
