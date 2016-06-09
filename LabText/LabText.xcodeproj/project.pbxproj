@@ -1,0 +1,376 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		112B456A5E1420906BB94D84 /* zmalloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5423720808EE7DF360274C5F /* zmalloc.cpp */; };
+		11CB499700C468FA319B50FC /* ftoa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FD3035F114C47857DA64BD8 /* ftoa.cpp */; };
+		327521BA3F847FD2463E2700 /* TextScannerLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 776802621E327BE12FBD5DFB /* TextScannerLib.cpp */; };
+		3650544057C90D60247C7AF4 /* TextScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28840103726157C158CC3DA1 /* TextScanner.cpp */; };
+		4A115EF213966F5C142F3921 /* dict.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0ECB4FBD17BC483B58786CA7 /* dict.cpp */; };
+		57F86E7F71D37C6F0FC554FA /* itoa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51762A5C2E1A69B261F55BC2 /* itoa.cpp */; };
+		E2FAF53018C8D5CB00FCCE4C /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2FAF52E18C8D5CB00FCCE4C /* Dictionary.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0ECB4FBD17BC483B58786CA7 /* dict.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dict.cpp; sourceTree = "<group>"; };
+		20A9632744CA4BDA62BA527B /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		27892C3D6CCF3FC13E8F4C9C /* zmalloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zmalloc.h; sourceTree = "<group>"; };
+		27FC3EAE1A0D676E00407725 /* itoa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = itoa.h; sourceTree = "<group>"; };
+		28840103726157C158CC3DA1 /* TextScanner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextScanner.cpp; sourceTree = "<group>"; };
+		4A216AC34C2F549D1C4D0EA7 /* dict.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dict.h; sourceTree = "<group>"; };
+		51762A5C2E1A69B261F55BC2 /* itoa.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = itoa.cpp; sourceTree = "<group>"; };
+		5423720808EE7DF360274C5F /* zmalloc.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = zmalloc.cpp; sourceTree = "<group>"; };
+		5503738D69442F7404856B58 /* libLabText.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLabText.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		64214A3C57A74C42170A2562 /* TextScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextScanner.h; sourceTree = "<group>"; };
+		746D584145787BE8517E59D7 /* ftoa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ftoa.h; sourceTree = "<group>"; };
+		776802621E327BE12FBD5DFB /* TextScannerLib.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextScannerLib.cpp; sourceTree = "<group>"; };
+		7FD3035F114C47857DA64BD8 /* ftoa.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ftoa.cpp; sourceTree = "<group>"; };
+		E2C0123A18D74FEA0000CB07 /* TextScanner.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextScanner.hpp; sourceTree = "<group>"; };
+		E2FAF52D18C8D53800FCCE4C /* Dictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
+		E2FAF52E18C8D5CB00FCCE4C /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dictionary.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62F22FD1653240F25C555D1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01D4140E39EF28BC630B1BDF /* LabText */ = {
+			isa = PBXGroup;
+			children = (
+				6C8330D320F5713148C507FF /* src */,
+				4E5F46673765080515AA679E /* Products */,
+			);
+			name = LabText;
+			sourceTree = "<group>";
+		};
+		143337D926222A91181A64E3 /* LabText */ = {
+			isa = PBXGroup;
+			children = (
+				28840103726157C158CC3DA1 /* TextScanner.cpp */,
+				64214A3C57A74C42170A2562 /* TextScanner.h */,
+				E2C0123A18D74FEA0000CB07 /* TextScanner.hpp */,
+				776802621E327BE12FBD5DFB /* TextScannerLib.cpp */,
+				20A9632744CA4BDA62BA527B /* config.h */,
+				0ECB4FBD17BC483B58786CA7 /* dict.cpp */,
+				4A216AC34C2F549D1C4D0EA7 /* dict.h */,
+				7FD3035F114C47857DA64BD8 /* ftoa.cpp */,
+				746D584145787BE8517E59D7 /* ftoa.h */,
+				51762A5C2E1A69B261F55BC2 /* itoa.cpp */,
+				27FC3EAE1A0D676E00407725 /* itoa.h */,
+				5423720808EE7DF360274C5F /* zmalloc.cpp */,
+				27892C3D6CCF3FC13E8F4C9C /* zmalloc.h */,
+				E2FAF52D18C8D53800FCCE4C /* Dictionary.h */,
+				E2FAF52E18C8D5CB00FCCE4C /* Dictionary.cpp */,
+			);
+			path = LabText;
+			sourceTree = "<group>";
+		};
+		4E5F46673765080515AA679E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5503738D69442F7404856B58 /* libLabText.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6C8330D320F5713148C507FF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				143337D926222A91181A64E3 /* LabText */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17E146215951096955B15869 /* LabText */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 500052E437392BC11E787737 /* Build configuration list for PBXNativeTarget "LabText" */;
+			buildPhases = (
+				762C57FF31EF46A677503128 /* Resources */,
+				615E1A263E610AC31C912289 /* Sources */,
+				62F22FD1653240F25C555D1F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LabText;
+			productName = LabText;
+			productReference = 5503738D69442F7404856B58 /* libLabText.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+			};
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "LabText" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 01D4140E39EF28BC630B1BDF /* LabText */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17E146215951096955B15869 /* LabText */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		762C57FF31EF46A677503128 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		615E1A263E610AC31C912289 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3650544057C90D60247C7AF4 /* TextScanner.cpp in Sources */,
+				E2FAF53018C8D5CB00FCCE4C /* Dictionary.cpp in Sources */,
+				327521BA3F847FD2463E2700 /* TextScannerLib.cpp in Sources */,
+				4A115EF213966F5C142F3921 /* dict.cpp in Sources */,
+				11CB499700C468FA319B50FC /* ftoa.cpp in Sources */,
+				57F86E7F71D37C6F0FC554FA /* itoa.cpp in Sources */,
+				112B456A5E1420906BB94D84 /* zmalloc.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		156C027F6B1009F3352D1EB0 /* Debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					__MACOSX_CORE__,
+					OSX,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = src;
+				OBJROOT = obj/x32/Debug;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-std=c++11",
+					"-stdlib=libc++",
+				);
+				SDKROOT = macosx;
+				SYMROOT = build/Debug;
+			};
+			name = "Debug Native 32-bit";
+		};
+		26864BF035F63D7E52314FB9 /* Debug Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Debug32";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				OBJROOT = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = LabText;
+				SYMROOT = build;
+				VALID_ARCHS = x86_64;
+			};
+			name = "Debug Native 32-bit";
+		};
+		3E8A10466FB1019C67DD71EA /* Release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NDEBUG,
+					__MACOSX_CORE__,
+					OSX,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = src;
+				OBJROOT = obj/x32/Release;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-std=c++11",
+					"-stdlib=libc++",
+				);
+				SDKROOT = macosx;
+				SYMROOT = build/Release;
+			};
+			name = "Release Native 32-bit";
+		};
+		415971936E5E127904691F58 /* Debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Debug";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				OBJROOT = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = LabText;
+				SYMROOT = build;
+				VALID_ARCHS = x86_64;
+			};
+			name = "Debug Native 64-bit";
+		};
+		567013CD0A8D64C27D346951 /* Release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Release";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				OBJROOT = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = LabText;
+				SYMROOT = build;
+				VALID_ARCHS = x86_64;
+			};
+			name = "Release Native 64-bit";
+		};
+		6DAD0D51765B668139010256 /* Debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					__MACOSX_CORE__,
+					OSX,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = src;
+				OBJROOT = obj/x64/Debug;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-std=c++11",
+					"-stdlib=libc++",
+				);
+				SDKROOT = macosx;
+				SYMROOT = build/Debug;
+			};
+			name = "Debug Native 64-bit";
+		};
+		701E029D46CF403313EF66C9 /* Release Native 32-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Release32";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				OBJROOT = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = LabText;
+				SYMROOT = build;
+				VALID_ARCHS = x86_64;
+			};
+			name = "Release Native 32-bit";
+		};
+		7CC92D9C67D856F25C792BBE /* Release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NDEBUG,
+					__MACOSX_CORE__,
+					OSX,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = src;
+				OBJROOT = obj/x64/Release;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-std=c++11",
+					"-stdlib=libc++",
+				);
+				SDKROOT = macosx;
+				SYMROOT = build/Release;
+			};
+			name = "Release Native 64-bit";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "LabText" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				156C027F6B1009F3352D1EB0 /* Debug Native 32-bit */,
+				6DAD0D51765B668139010256 /* Debug Native 64-bit */,
+				3E8A10466FB1019C67DD71EA /* Release Native 32-bit */,
+				7CC92D9C67D856F25C792BBE /* Release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug Native 32-bit";
+		};
+		500052E437392BC11E787737 /* Build configuration list for PBXNativeTarget "LabText" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26864BF035F63D7E52314FB9 /* Debug Native 32-bit */,
+				415971936E5E127904691F58 /* Debug Native 64-bit */,
+				701E029D46CF403313EF66C9 /* Release Native 32-bit */,
+				567013CD0A8D64C27D346951 /* Release Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug Native 32-bit";
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
