@@ -1,0 +1,159 @@
+flowchart LR
+    %% Define node styles
+    classDef terminal fill:#f96,stroke:#333,stroke-width:2px
+    classDef standard fill:#fff,stroke:#333,stroke-width:1px
+    classDef core fill:#d4f1f9,stroke:#333,stroke-width:2px
+    classDef format fill:#e6f9e6,stroke:#333,stroke-width:1px
+    classDef geom fill:#fff2cc,stroke:#333,stroke-width:1px
+    classDef view fill:#e1d5e7,stroke:#333,stroke-width:1px
+    classDef runtime fill:#ffe6cc,stroke:#333,stroke-width:1px
+    classDef coreProfile fill:#ff9999,stroke:#990000,stroke-width:3px,color:#000000,font-weight:bold
+    
+    %% Using long links to try to push usd2505 to the right
+    %% Core Profile (we want this on the far right)
+    usd2505["USD 25.05<br>Core Profile"]
+    
+    %% Use subgraphs to group related components
+    subgraph CoreModules["USD Core Modules"]
+        usdCore["usd.core"]
+    end
+    
+    subgraph FormatModules["Format Modules"]
+        usdf["usd.format"]
+        usda["usd.format.usda"]
+        usdc["usd.format.usda"]
+        usdfz["usd.format.usdz"]
+        usdfMx["usd.format.materialx"]
+        usdfD["usd.format.draco"]
+        usdfA["usd.format.alembic"]
+        usdfA5["usd.format.alembic.hdf5"]
+        
+        usdf --> usdfA
+        usdf --> usdfD
+        usdf --> usdfMx
+        usdf --> usdc
+        usdf --> usda
+        usda --> usdfz
+        usdc --> usdfz
+        usdfA --> usdfA5
+    end
+    
+    subgraph GeometryModules["Geometry Modules"]
+        usdgeom["usd.geom"]
+        usdgeomphysics["usd.geom.physics"]
+        usdgeomskel["usd.geom.skel"]
+        usdau["usd.geom.audio"]
+        usdpi["usd.geom.pointinstancer"]
+        usdv["usd.geom.vol"]
+        usdgeomall["usd.geom.all"]
+        usdIm["usd.imaging"]
+        
+        usdgeom --> usdgeomphysics
+        usdgeom --> usdgeomskel
+        usdgeom --> usdpi
+        usdgeom --> usdau
+        usdgeom --> usdv
+        usdgeom --> usdgeomall
+        usdgeom --> usdIm
+        usdgeomphysics --> usdgeomall
+        usdgeomskel --> usdgeomall
+        usdpi --> usdgeomall
+        usdau --> usdgeomall
+        usdv --> usdgeomall
+    end
+    
+    subgraph ViewModules["View Modules"]
+        viewIm["view.imaging"]
+        viewMx["view.materialX"]
+        vsk["view.geom.physics"]
+        vpi["view.geom.pointinstancer"]
+        vau["view.geom.audio"]
+        vav["view.geom.vol"]
+        vrk["view.apple.realityKit"]
+        vadfs["view.adobe.substance"]
+        viewimg["view.image"]
+        vfavif["image.format.avif"]
+        vfexr["image.format.exr"]
+        vfjpg["image.format.jpg"]
+        vfpng["image.format.png"]
+        
+        viewimg --> vfavif
+        viewimg --> vfexr
+        viewimg --> vfjpg
+        viewimg --> vfpng
+    end
+    
+    subgraph RuntimeModules["Runtime Modules"]
+        rusdgp["runtime.geom.physics"]
+        rgsk["runtime.geom.skel"]
+        rpi["runtime.geom.pointinstancer"]
+        rau["runtime.geom.audio"]
+    end
+    
+    subgraph OtherModules["Other Modules"]
+        afrk["apple.format.realityKit"]
+        adfs["adobe.format.substance"]
+        imgfmt["image.format"]
+        sif["image.format.all"]
+        
+        imgfmt --> viewimg
+        imgfmt --> usdfz
+        vfavif --> sif
+        vfexr --> sif
+        vfjpg --> sif
+        vfpng --> sif
+    end
+    
+    %% Cross-subgraph connections
+    usdCore --> usdf
+    usdCore --> usdgeom
+    
+    usdIm --> viewIm
+    usdfMx --> viewMx
+    
+    usdgeomphysics --> vsk
+    usdgeomskel --> vsk
+    usdpi --> vpi
+    usdau --> vau
+    usdv --> vav
+    
+    usdfz --> afrk
+    afrk --> vrk
+    vsk --> vrk
+    rgsk --> vrk
+    rau --> vrk
+    viewIm --> vrk
+    
+    adfs --> vadfs
+    
+    usdgeomphysics --> rusdgp
+    usdgeomskel --> rgsk
+    usdpi --> rpi
+    usdau --> rau
+    
+    %% Connections to Core Profile - using longer links to push to right
+    usdgeomall -----> usd2505
+    sif -----> usd2505
+    usdfMx -----> usd2505
+    usdIm -----> usd2505
+    
+    %% Connections from Core Profile
+    usd2505 --> afrk
+    usd2505 --> adfs
+    
+    %% Apply terminal class to terminal nodes (excluding usd2505)
+    class usdfA5,viewMx,vpi,vau,vav,vrk,vadfs,vfavif,vfexr,vfjpg,vfpng,rusdgp,rpi terminal
+    
+    %% Apply module-specific classes to nodes
+    class usdCore core
+    class usdf,usda,usdc,usdfz,usdfMx,usdfD,usdfA,usdfA5 format
+    class usdgeom,usdgeomphysics,usdgeomskel,usdau,usdpi,usdv,usdgeomall,usdIm geom
+    class viewIm,viewMx,vsk,vpi,vau,vav,vrk,vadfs,viewimg,vfavif,vfexr,vfjpg,vfpng view
+    class rusdgp,rgsk,rpi,rau runtime
+    
+    %% Apply special styling to Core Profile
+    class usd2505 coreProfile
+    
+    %% Add click events with tooltips
+    click usd2505 "Core Profile - The standardized subset of USD functionality" _blank
+    click usdCore "Core module that provides base USD functionality" _blank

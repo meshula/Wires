@@ -2,6 +2,17 @@
 Wires
 ======
 
+Note that to compile all the samples you will need leveldb in a folder called extern. i.e.:
+
+```
+Wires/
+  extern/
+    leveldb/
+  LabText/
+  etc./
+```
+
+
 Rules
 -----
 
