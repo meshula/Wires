@@ -45,9 +45,9 @@ void testParseSample() {
             std::cout << "  - Node ID: '" << id << "', Label: '" << node.label << "'" << std::endl;
         }
         
-        // Compare the two charts
-        if (originalChart != rewrittenChart) {
-            throw std::runtime_error("Charts are not equal after rewriting");
+        // Compare the two charts using semantic equality
+        if (!originalChart.semanticEquals(rewrittenChart)) {
+            throw std::runtime_error("Charts are not semantically equal after rewriting");
         }
     } catch (const std::exception& e) {
         std::cerr << "ERROR: " << e.what() << std::endl;
@@ -329,20 +329,125 @@ flowchart TD
     MermaidWriter::writeToFile(chart, "subgraph_test.mermaid");
     Chart reparsedChart = MermaidParser::parseFile("subgraph_test.mermaid");
     
-    // Verify subgraphs are preserved in rewritten chart
-    if (reparsedChart.subgraphs.size() != chart.subgraphs.size()) {
-        throw std::runtime_error("Subgraph count changed after rewriting");
-    }
-    
-    // Check node counts in reparsed subgraphs
-    for (const auto& [id, subgraph] : chart.subgraphs) {
-        if (reparsedChart.subgraphs.find(id) == reparsedChart.subgraphs.end()) {
-            throw std::runtime_error("Subgraph '" + id + "' missing after rewrite");
+    // Verify charts are semantically equivalent after rewriting
+    if (!chart.semanticEquals(reparsedChart)) {
+        std::cout << "\n=== SEMANTIC EQUALITY FAILED - DIAGNOSTIC OUTPUT ===\n";
+        std::cout << "Original chart has:" << std::endl;
+        std::cout << "  - Nodes: " << chart.nodes.size() << std::endl;
+        std::cout << "  - Connections: " << chart.connections.size() << std::endl;
+        std::cout << "  - Subgraphs: " << chart.subgraphs.size() << std::endl;
+        std::cout << "  - Class definitions: " << chart.classDefinitions.size() << std::endl;
+        std::cout << "  - Node classes: " << chart.nodeClasses.size() << std::endl;
+        
+        std::cout << "\nReparsed chart has:" << std::endl;
+        std::cout << "  - Nodes: " << reparsedChart.nodes.size() << std::endl;
+        std::cout << "  - Connections: " << reparsedChart.connections.size() << std::endl;
+        std::cout << "  - Subgraphs: " << reparsedChart.subgraphs.size() << std::endl;
+        std::cout << "  - Class definitions: " << reparsedChart.classDefinitions.size() << std::endl;
+        std::cout << "  - Node classes: " << reparsedChart.nodeClasses.size() << std::endl;
+        
+        // Check each component individually
+        std::cout << "\n--- Individual Component Checks ---" << std::endl;
+        
+        // Direction
+        if (chart.direction != reparsedChart.direction) {
+            std::cout << "❌ Direction differs: " 
+                      << (chart.direction == Direction::LR ? "LR" : "TD") << " vs " 
+                      << (reparsedChart.direction == Direction::LR ? "LR" : "TD") << std::endl;
+        } else {
+            std::cout << "✅ Direction matches" << std::endl;
         }
         
-        if (reparsedChart.subgraphs[id].nodeIds.size() != subgraph.nodeIds.size()) {
-            throw std::runtime_error("Node count in subgraph '" + id + "' changed after rewrite");
+        // Nodes
+        if (chart.nodes.size() != reparsedChart.nodes.size()) {
+            std::cout << "❌ Node count differs" << std::endl;
+        } else {
+            bool nodesDiffer = false;
+            for (const auto& [id, node] : chart.nodes) {
+                auto it = reparsedChart.nodes.find(id);
+                if (it == reparsedChart.nodes.end() || 
+                    node.id != it->second.id || 
+                    node.label != it->second.label) {
+                    std::cout << "❌ Node '" << id << "' differs" << std::endl;
+                    if (it != reparsedChart.nodes.end()) {
+                        std::cout << "   Original: label='" << node.label << "'" << std::endl;
+                        std::cout << "   Reparsed: label='" << it->second.label << "'" << std::endl;
+                    }
+                    nodesDiffer = true;
+                }
+            }
+            if (!nodesDiffer) {
+                std::cout << "✅ All nodes match" << std::endl;
+            }
         }
+        
+        // Connections
+        if (chart.connections.size() != reparsedChart.connections.size()) {
+            std::cout << "❌ Connection count differs" << std::endl;
+        } else {
+            std::cout << "✅ Connection count matches, checking content..." << std::endl;
+            for (const auto& conn : chart.connections) {
+                bool found = false;
+                for (const auto& otherConn : reparsedChart.connections) {
+                    if (conn.from == otherConn.from && 
+                        conn.to == otherConn.to && 
+                        conn.label == otherConn.label) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    std::cout << "❌ Connection missing: " << conn.from << " -> " << conn.to << std::endl;
+                }
+            }
+        }
+        
+        // Subgraphs
+        if (chart.subgraphs.size() != reparsedChart.subgraphs.size()) {
+            std::cout << "❌ Subgraph count differs" << std::endl;
+        } else {
+            std::cout << "✅ Subgraph count matches, checking content..." << std::endl;
+            for (const auto& [id, subgraph] : chart.subgraphs) {
+                auto it = reparsedChart.subgraphs.find(id);
+                if (it == reparsedChart.subgraphs.end()) {
+                    std::cout << "❌ Subgraph '" << id << "' missing in reparsed chart" << std::endl;
+                } else {
+                    if (subgraph.id != it->second.id ||
+                        subgraph.label != it->second.label ||
+                        subgraph.nodeIds != it->second.nodeIds) {
+                        std::cout << "❌ Subgraph '" << id << "' content differs:" << std::endl;
+                        std::cout << "   Original nodes (" << subgraph.nodeIds.size() << "): ";
+                        for (const auto& nodeId : subgraph.nodeIds) {
+                            std::cout << nodeId << " ";
+                        }
+                        std::cout << std::endl;
+                        std::cout << "   Reparsed nodes (" << it->second.nodeIds.size() << "): ";
+                        for (const auto& nodeId : it->second.nodeIds) {
+                            std::cout << nodeId << " ";
+                        }
+                        std::cout << std::endl;
+                    }
+                }
+            }
+        }
+        
+        // Class definitions
+        if (chart.classDefinitions.size() != reparsedChart.classDefinitions.size()) {
+            std::cout << "❌ Class definition count differs" << std::endl;
+        } else {
+            std::cout << "✅ Class definition count matches" << std::endl;
+        }
+        
+        // Node classes
+        if (chart.nodeClasses.size() != reparsedChart.nodeClasses.size()) {
+            std::cout << "❌ Node class count differs" << std::endl;
+        } else {
+            std::cout << "✅ Node class count matches" << std::endl;
+        }
+        
+        std::cout << "\n=== END DIAGNOSTIC OUTPUT ===\n" << std::endl;
+        
+        throw std::runtime_error("Charts are not semantically equal after subgraph rewriting");
     }
 }
 
